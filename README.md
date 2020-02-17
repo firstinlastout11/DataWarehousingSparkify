@@ -13,9 +13,9 @@ Then, it has 4 dimension tables: users, songs, artists and time.
 Through this schema, the database is normalized and organized in such a way that its users can efficiently query the data.
 
 ## Files
-* 'sql_queries.py' contains code to define SQL queries to create tables in the schema and queries needed for ETL pipeline
-* 'create_tables.py' contains python code to create the schema in the AWS Redshift cloud using the queries defined in 'sql_queries.py'
-* 'elt.py' contains python code to perform the ETL process: 1) Extracting json data objects in the given S3, 2) Transforming and Loading the data into the staging tables on Redshift, 3) Inserting the right data into the tables in the Scheme in Redshift database
+* `sql_queries.py` contains code to define SQL queries to create tables in the schema and queries needed for ETL pipeline
+* `create_tables.py` contains python code to create the schema in the AWS Redshift cloud using the queries defined in 'sql_queries.py'
+* `elt.py` contains python code to perform the ETL process: 1) Extracting json data objects in the given S3, 2) Transforming and Loading the data into the staging tables on Redshift, 3) Inserting the right data into the tables in the Scheme in Redshift database
 
 
 ## How to run the codes
@@ -26,7 +26,7 @@ After the installation, to run the code, create_table.py needs to be run.
 Since this runs on AWS redshift, Redshift cluster on AWS is necessary.
 Then, create a file called 'dwh.cfg' and fill in as below:
 
-'''
+```
 [CLUSTER]
 HOST=<host>
 DB_NAME=<db_name>
@@ -58,6 +58,7 @@ For example,
 
 * Get users who listened to certain songs at a particular year and month
 
+
 ```
 SELECT  sp.songplay_id,
         u.user_id,
@@ -72,4 +73,3 @@ FROM songplays AS sp
 WHERE t.year = '2018' AND t.month = '11'
 LIMIT 100;
 ```
-
