@@ -26,6 +26,7 @@ After the installation, to run the code, create_table.py needs to be run.
 Since this runs on AWS redshift, Redshift cluster on AWS is necessary.
 Then, create a file called 'dwh.cfg' and fill in as below:
 
+'''
 [CLUSTER]
 HOST=<host>
 DB_NAME=<db_name>
