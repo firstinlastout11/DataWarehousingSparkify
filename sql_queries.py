@@ -19,23 +19,23 @@ time_table_drop = "DROP TABLE IF EXISTS time"
 
 staging_events_table_create= ("""
 
-CREATE TABLE staging_events (event_id BIGINT IDENTITY(0,1) NOT NULL,
+CREATE TABLE staging_events (event_id BIGINT IDENTITY(0,1),
                                     artist VARCHAR,
-                                    auth VARCHAR NOT NULL,
+                                    auth VARCHAR ,
                                     firstName VARCHAR,
                                     gender CHAR(1),
                                     itemInSession VARCHAR,
                                     lastName VARCHAR(15),
                                     length VARCHAR,
-                                    level VARCHAR(4) NOT NULL,
+                                    level VARCHAR(4) ,
                                     location VARCHAR,
-                                    method VARCHAR NOT NULL,
-                                    page VARCHAR NOT NULL,
-                                    registration VARCHAR NULL,
-                                    sessionId INTEGER NOT NULL,
+                                    method VARCHAR,
+                                    page VARCHAR,
+                                    registration VARCHAR,
+                                    sessionId INTEGER,
                                     song VARCHAR,
                                     status INTEGER,
-                                    ts BIGINT NOT NULL,
+                                    ts BIGINT,
                                     userAgent VARCHAR,
                                     userId INTEGER);
 
@@ -44,48 +44,48 @@ CREATE TABLE staging_events (event_id BIGINT IDENTITY(0,1) NOT NULL,
 staging_songs_table_create = ("""
 
 CREATE TABLE staging_songs(num_songs INTEGER,
-                            artist_id VARCHAR NOT NULL sortkey,
+                            artist_id VARCHAR  sortkey,
                             artist_latitude VARCHAR,
                             artist_longitude VARCHAR,
                             artist_location VARCHAR,
                             artist_name VARCHAR,
-                            song_id VARCHAR NOT NULL,
-                            title VARCHAR(500) NOT NULL,
+                            song_id VARCHAR ,
+                            title VARCHAR(500) ,
                             duration DECIMAL,
                             year INTEGER);
 """)
 
 
 songplay_table_create = ("""
-CREATE TABLE songplays (songplay_id BIGINT IDENTITY(0,1) NOT NULL sortkey,
-                            start_time TIMESTAMP NOT NULL,
+CREATE TABLE songplays (songplay_id BIGINT IDENTITY(0,1) sortkey,
+                            start_time TIMESTAMP ,
                             user_id INTEGER,
-                            level VARCHAR(4) NOT NULL,
-                            song_id VARCHAR NOT NULL,
-                            artist_id VARCHAR NOT NULL,
-                            session_id INTEGER NOT NULL,
+                            level VARCHAR(4),
+                            song_id VARCHAR,
+                            artist_id VARCHAR,
+                            session_id INTEGER,
                             location VARCHAR,
                             user_agent VARCHAR);
 """)
 
 user_table_create = ("""
-CREATE TABLE users (user_id INTEGER NOT NULL sortkey,
-                    first_name VARCHAR NOT NULL,
-                    last_name VARCHAR NOT NULL,
+CREATE TABLE users (user_id INTEGER  sortkey,
+                    first_name VARCHAR PRIMARY KEY,
+                    last_name VARCHAR ,
                     gender CHAR(1),
-                    level VARCHAR(4) NOT NULL);
+                    level VARCHAR(4) );
 """)
 
 song_table_create = ("""
-CREATE TABLE songs (song_id VARCHAR NOT NULL sortkey,
-                    title VARCHAR(500) NOT NULL,
-                    artist_id VARCHAR NOT NULL,
+CREATE TABLE songs (song_id VARCHAR  sortkey PRIMARY KEY,
+                    title VARCHAR(500) ,
+                    artist_id VARCHAR ,
                     year SMALLINT,
                     duration DECIMAL);
 """)
 
 artist_table_create = ("""
-CREATE TABLE artists (artist_id VARCHAR NOT NULL sortkey,
+CREATE TABLE artists (artist_id VARCHAR sortkey PRIMARY KEY,
                     name VARCHAR,
                     location VARCHAR,
                     latitude VARCHAR,
@@ -93,7 +93,7 @@ CREATE TABLE artists (artist_id VARCHAR NOT NULL sortkey,
 """)
 
 time_table_create = ("""
-CREATE TABLE time (start_time TIMESTAMP  NOT NULL sortkey,
+CREATE TABLE time (start_time TIMESTAMP PRIMARY KEY sortkey,
                     hour SMALLINT,
                     day SMALLINT,
                     week SMALLINT,
