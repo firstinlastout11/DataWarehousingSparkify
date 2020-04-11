@@ -19,8 +19,7 @@ time_table_drop = "DROP TABLE IF EXISTS time"
 
 staging_events_table_create= ("""
 
-CREATE TABLE staging_events (event_id BIGINT IDENTITY(0,1),
-                                    artist VARCHAR,
+CREATE TABLE staging_events (       artist VARCHAR,
                                     auth VARCHAR ,
                                     firstName VARCHAR,
                                     gender CHAR(1),
@@ -57,20 +56,20 @@ CREATE TABLE staging_songs(num_songs INTEGER,
 
 
 songplay_table_create = ("""
-CREATE TABLE songplays (songplay_id BIGINT IDENTITY(0,1) sortkey,
-                            start_time TIMESTAMP ,
-                            user_id INTEGER,
+CREATE TABLE songplays (songplay_id BIGINT IDENTITY(0,1) PRIMARY KEY sortkey,
+                            start_time TIMESTAMP NOT NULL,
+                            user_id INTEGER NOT NULL,
                             level VARCHAR(4),
-                            song_id VARCHAR,
-                            artist_id VARCHAR,
+                            song_id VARCHAR NOT NULL,
+                            artist_id VARCHAR NOT NULL,
                             session_id INTEGER,
                             location VARCHAR,
                             user_agent VARCHAR);
 """)
 
 user_table_create = ("""
-CREATE TABLE users (user_id INTEGER  sortkey,
-                    first_name VARCHAR PRIMARY KEY,
+CREATE TABLE users (user_id INTEGER  PRIMARY KEY sortkey,
+                    first_name VARCHAR,
                     last_name VARCHAR ,
                     gender CHAR(1),
                     level VARCHAR(4) );
@@ -79,7 +78,7 @@ CREATE TABLE users (user_id INTEGER  sortkey,
 song_table_create = ("""
 CREATE TABLE songs (song_id VARCHAR  sortkey PRIMARY KEY,
                     title VARCHAR(500) ,
-                    artist_id VARCHAR ,
+                    artist_id VARCHAR NOT NULL,
                     year SMALLINT,
                     duration DECIMAL);
 """)
