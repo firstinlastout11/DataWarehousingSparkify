@@ -5,7 +5,7 @@ from sql_queries import copy_table_queries, insert_table_queries
 
 def load_staging_tables(cur, conn):
     """
-    This function serves to load all the information from the json objects in the Sparkify S3 to Staging tables.
+    This function serves to load all the information from the json objects in the Sparkify S3 to Staging tables in Redshift.
     There are two staging tables : staging_events and staging_songs.
 
     """
@@ -16,7 +16,7 @@ def load_staging_tables(cur, conn):
 
 def insert_tables(cur, conn):
     """
-    This function serves to insert the data into the right tables from staging tables.
+    This function serves to insert the data into the right tables from staging tables in Redshift.
     It utilizes insert_table_queries in sql_queries.py.
 
     """
